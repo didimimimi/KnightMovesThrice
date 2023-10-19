@@ -1,4 +1,4 @@
-# KnightMoveThrice
+# KnightMovesThrice
 A small project where a knight has to reach, from a starting point on a chessboard, the desired position in 3 moves or less
 
 Using a BFS-search algorithm, a knight on a chessboard tries to move around in a way that will allow it to reach the desired position using, at maximum, three moves.
