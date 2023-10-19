@@ -16,6 +16,7 @@
 		340877852AE1DF8000547BBE /* KnightMovesThriceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340877842AE1DF8000547BBE /* KnightMovesThriceTests.swift */; };
 		3408778F2AE1DF8000547BBE /* KnightMovesThriceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3408778E2AE1DF8000547BBE /* KnightMovesThriceUITests.swift */; };
 		340877912AE1DF8000547BBE /* KnightMovesThriceUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340877902AE1DF8000547BBE /* KnightMovesThriceUITestsLaunchTests.swift */; };
+		3408779E2AE1E32300547BBE /* KnightHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3408779D2AE1E32300547BBE /* KnightHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		3408778A2AE1DF8000547BBE /* KnightMovesThriceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KnightMovesThriceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3408778E2AE1DF8000547BBE /* KnightMovesThriceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightMovesThriceUITests.swift; sourceTree = "<group>"; };
 		340877902AE1DF8000547BBE /* KnightMovesThriceUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightMovesThriceUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3408779D2AE1E32300547BBE /* KnightHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				340877762AE1DF7F00547BBE /* Assets.xcassets */,
 				340877782AE1DF7F00547BBE /* LaunchScreen.storyboard */,
 				3408777B2AE1DF7F00547BBE /* Info.plist */,
+				3408779D2AE1E32300547BBE /* KnightHelper.swift */,
 			);
 			path = KnightMovesThrice;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			files = (
 				340877722AE1DF7D00547BBE /* ViewController.swift in Sources */,
 				3408776E2AE1DF7D00547BBE /* AppDelegate.swift in Sources */,
+				3408779E2AE1E32300547BBE /* KnightHelper.swift in Sources */,
 				340877702AE1DF7D00547BBE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
