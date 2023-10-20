@@ -18,6 +18,7 @@ class ChessSquareCollectionViewCell: UICollectionViewCell {
     
     private var square = ChessBoardSquare()
     private weak var delegate: ChessSquareCollectionViewCellDelegate?
+    static let cellId = "ChessSquareCollectionViewCell"
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainScreenViewController" customModule="KnightMovesThrice" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="04k-3X-vKx" id="Bum-kF-5eB"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kg3-Wz-Kuh" userLabel="Container View">
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="04k-3X-vKx">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="714"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Kzm-55-8ZX">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="teT-CW-Kfn">
+                            <rect key="frame" x="0.0" y="738" width="195" height="21"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1w6-cQ-WPg">
+                                    <rect key="frame" x="0.0" y="0.0" width="195" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="1w6-cQ-WPg" firstAttribute="top" secondItem="teT-CW-Kfn" secondAttribute="top" id="D1y-Ew-JWx"/>
+                                <constraint firstItem="1w6-cQ-WPg" firstAttribute="leading" secondItem="teT-CW-Kfn" secondAttribute="leading" id="JXD-wx-Q8Z"/>
+                                <constraint firstAttribute="trailing" secondItem="1w6-cQ-WPg" secondAttribute="trailing" id="K4l-is-aKh"/>
+                                <constraint firstAttribute="bottom" secondItem="1w6-cQ-WPg" secondAttribute="bottom" id="LlU-j1-bhT"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="04k-3X-vKx" firstAttribute="top" secondItem="kg3-Wz-Kuh" secondAttribute="top" id="D4d-30-hP7"/>
+                        <constraint firstItem="04k-3X-vKx" firstAttribute="leading" secondItem="kg3-Wz-Kuh" secondAttribute="leading" id="Nlg-yP-mCO"/>
+                        <constraint firstAttribute="trailing" secondItem="teT-CW-Kfn" secondAttribute="trailing" constant="198" id="eSj-xC-UGi"/>
+                        <constraint firstItem="teT-CW-Kfn" firstAttribute="leading" secondItem="kg3-Wz-Kuh" secondAttribute="leading" id="giV-8a-CQd"/>
+                        <constraint firstItem="teT-CW-Kfn" firstAttribute="top" secondItem="04k-3X-vKx" secondAttribute="bottom" constant="24" id="ofe-Ub-Yha"/>
+                        <constraint firstAttribute="trailing" secondItem="04k-3X-vKx" secondAttribute="trailing" id="tsZ-2Q-qYj"/>
+                        <constraint firstAttribute="bottom" secondItem="teT-CW-Kfn" secondAttribute="bottom" id="yW3-je-cst"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="kg3-Wz-Kuh" secondAttribute="bottom" id="Laz-PL-RNk"/>
+                <constraint firstItem="kg3-Wz-Kuh" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Pmf-v1-amv"/>
+                <constraint firstItem="kg3-Wz-Kuh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ToC-Fb-x24"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="kg3-Wz-Kuh" secondAttribute="trailing" id="u9b-DP-vy2"/>
+            </constraints>
+            <point key="canvasLocation" x="132" y="-11"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
