@@ -17,6 +17,8 @@
 		3408778F2AE1DF8000547BBE /* KnightMovesThriceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3408778E2AE1DF8000547BBE /* KnightMovesThriceUITests.swift */; };
 		340877912AE1DF8000547BBE /* KnightMovesThriceUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340877902AE1DF8000547BBE /* KnightMovesThriceUITestsLaunchTests.swift */; };
 		3408779E2AE1E32300547BBE /* KnightHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3408779D2AE1E32300547BBE /* KnightHelper.swift */; };
+		34DF42482AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DF42462AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.swift */; };
+		34DF42492AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34DF42472AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		3408778E2AE1DF8000547BBE /* KnightMovesThriceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightMovesThriceUITests.swift; sourceTree = "<group>"; };
 		340877902AE1DF8000547BBE /* KnightMovesThriceUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightMovesThriceUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3408779D2AE1E32300547BBE /* KnightHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightHelper.swift; sourceTree = "<group>"; };
+		34DF42462AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessSquareCollectionViewCell.swift; sourceTree = "<group>"; };
+		34DF42472AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChessSquareCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,7 @@
 				3408776D2AE1DF7D00547BBE /* AppDelegate.swift */,
 				3408776F2AE1DF7D00547BBE /* SceneDelegate.swift */,
 				340877712AE1DF7D00547BBE /* ViewController.swift */,
+				34DF42452AE2DA8B0069B1B6 /* CollectionViewCells */,
 				340877732AE1DF7D00547BBE /* Main.storyboard */,
 				340877762AE1DF7F00547BBE /* Assets.xcassets */,
 				340877782AE1DF7F00547BBE /* LaunchScreen.storyboard */,
@@ -128,6 +133,15 @@
 				340877902AE1DF8000547BBE /* KnightMovesThriceUITestsLaunchTests.swift */,
 			);
 			path = KnightMovesThriceUITests;
+			sourceTree = "<group>";
+		};
+		34DF42452AE2DA8B0069B1B6 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				34DF42462AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.swift */,
+				34DF42472AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.xib */,
+			);
+			path = CollectionViewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +248,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34DF42492AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.xib in Resources */,
 				3408777A2AE1DF7F00547BBE /* LaunchScreen.storyboard in Resources */,
 				340877772AE1DF7F00547BBE /* Assets.xcassets in Resources */,
 				340877752AE1DF7D00547BBE /* Main.storyboard in Resources */,
@@ -262,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				340877722AE1DF7D00547BBE /* ViewController.swift in Sources */,
+				34DF42482AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.swift in Sources */,
 				3408776E2AE1DF7D00547BBE /* AppDelegate.swift in Sources */,
 				3408779E2AE1E32300547BBE /* KnightHelper.swift in Sources */,
 				340877702AE1DF7D00547BBE /* SceneDelegate.swift in Sources */,

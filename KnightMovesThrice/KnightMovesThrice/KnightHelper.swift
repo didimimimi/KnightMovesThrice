@@ -7,7 +7,24 @@
 
 import Foundation
 
-struct KnightPosition: Hashable {
-    let x: Int
-    let y: Int
+struct ChessBoardSquare {
+    let position = SquarePosition()
+    let mode = SquareMode.white
+    
+    struct SquarePosition: Hashable {
+        let x: Int
+        let y: Int
+        
+        init() {
+            x = 0
+            y = 0
+        }
+    }
+    
+    enum SquareMode {
+        case knight
+        case goal
+        case black
+        case white
+    }
 }
