@@ -16,12 +16,52 @@ enum ChessboardSquareMode {
 
 typealias ChessboardRow = [ChessboardSquare]
 
-struct Chessboard {
+class Chessboard {
     var board = [ChessboardRow]()
-    var size: Int
+    var size: Int {
+        didSet {
+            self.createChessboard()
+        }
+    }
     
     init(size: Int = 8) {
         self.size = size
+        self.createChessboard()
+    }
+    
+    private func createChessboard() {
+        self.board = []
+        
+        for row in 0..<self.size {
+            self.board.append(self.createSquares(inRow: row))
+        }
+    }
+    
+    private func createSquares(inRow row: Int) -> ChessboardRow {
+        var squaresInRow = ChessboardRow()
+        
+        for column in 0..<self.size {
+            let mode: ChessboardSquareMode
+            if row % 2 == 0 {
+                if column % 2 == 0 {
+                    mode = .black
+                } else {
+                    mode = .white
+                }
+            } else {
+                if column % 2 == 0 {
+                    mode = .white
+                } else {
+                    mode = .black
+                }
+            }
+            
+            let position = ChessboardSquarePosition(row: row, column: column)
+            let chessSquare = ChessboardSquare(position: position, mode: mode)
+            squaresInRow.append(chessSquare)
+        }
+        
+        return squaresInRow
     }
 }
 
@@ -75,45 +115,5 @@ class ChessboardSquarePosition: Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(row)
         hasher.combine(column)
-    }
-}
-
-
-class ChessboardHelper {
-    func createChessboard(ofSize size: Int) -> Chessboard {
-        var chessboard = Chessboard(size: size)
-        
-        for row in 0..<chessboard.size {
-            chessboard.board.append(self.createSquares(inRow: row, andChessboardSize: size))
-        }
-        
-        return chessboard
-    }
-    
-    private func createSquares(inRow row: Int, andChessboardSize size: Int) -> ChessboardRow {
-        var squaresInRow = ChessboardRow()
-        
-        for column in 0..<size {
-            let mode: ChessboardSquareMode
-            if row % 2 == 0 {
-                if column % 2 == 0 {
-                    mode = .black
-                } else {
-                    mode = .white
-                }
-            } else {
-                if column % 2 == 0 {
-                    mode = .white
-                } else {
-                    mode = .black
-                }
-            }
-            
-            let position = ChessboardSquarePosition(row: row, column: column)
-            let chessSquare = ChessboardSquare(position: position, mode: mode)
-            squaresInRow.append(chessSquare)
-        }
-        
-        return squaresInRow
     }
 }
