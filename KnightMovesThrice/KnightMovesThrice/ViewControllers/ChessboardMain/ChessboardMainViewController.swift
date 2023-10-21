@@ -159,8 +159,8 @@ extension ChessboardMainViewController: ChessboardMainViewModelDelegate {
             self.handleNewChessboardState(chessboard: chessboard)
         case .sliderValueChangedState(let value):
             self.handleSliderValueChangedState(value: value)
-        case .newSquareState(let square):
-            self.handleNewSquareState(square: square)
+        case .newSquareState(let newSquare, let oldSquare):
+            self.handleNewSquareState(newSquare: newSquare, oldSquare: oldSquare)
         case .drawPathState:
             self.handleDrawPathState()
         case .dummyState:
@@ -177,9 +177,12 @@ extension ChessboardMainViewController: ChessboardMainViewModelDelegate {
         self.boardSizeSlider.setValue(value, animated: true)
     }
     
-    private func handleNewSquareState(square: ChessboardSquare) {
+    private func handleNewSquareState(newSquare: ChessboardSquare, oldSquare: ChessboardSquare) {
         UIView.performWithoutAnimation {
-            self.collectionView.reloadItems(at: [IndexPath(item: square.position.column, section: square.position.row)])
+            self.collectionView.reloadItems(at: [
+                IndexPath(item: newSquare.position.column, section: newSquare.position.row),
+                IndexPath(item: oldSquare.position.column, section: oldSquare.position.row)
+            ])
         }
     }
     

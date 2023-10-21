@@ -7,11 +7,15 @@
 
 import Foundation
 
-enum ChessboardSquareMode {
-    case knight
-    case goal
+enum ChessboardSquareColor {
     case black
     case white
+}
+
+enum ChessboardSpecialSquareMode {
+    case knight
+    case goal
+    case none
 }
 
 typealias ChessboardRow = [ChessboardSquare]
@@ -45,41 +49,48 @@ class Chessboard {
         var squaresInRow = ChessboardRow()
         
         for column in 0..<self.size {
-            let mode: ChessboardSquareMode
+            let color: ChessboardSquareColor
+            
             if row % 2 == 0 {
                 if column % 2 == 0 {
-                    mode = .black
+                    color = .black
                 } else {
-                    mode = .white
+                    color = .white
                 }
             } else {
                 if column % 2 == 0 {
-                    mode = .white
+                    color = .white
                 } else {
-                    mode = .black
+                    color = .black
                 }
             }
             
             let position = ChessboardSquarePosition(row: row, column: column)
-            let chessSquare = ChessboardSquare(position: position, mode: mode)
+            let chessSquare = ChessboardSquare(position: position, color: color, mode: .none)
             squaresInRow.append(chessSquare)
         }
         
         return squaresInRow
+    }
+    
+    func getOriginalColor(of square: ChessboardSquare) {
+        
     }
 }
 
 class ChessboardSquare: Hashable {
     
     var position = ChessboardSquarePosition()
-    var mode = ChessboardSquareMode.white
+    var color = ChessboardSquareColor.white
+    var mode = ChessboardSpecialSquareMode.none
     
     var description: String {
         return "Position: \(position.description), Mode: \(mode)"
     }
     
-    init(position: ChessboardSquarePosition, mode: ChessboardSquareMode) {
+    init(position: ChessboardSquarePosition, color: ChessboardSquareColor, mode: ChessboardSpecialSquareMode) {
         self.position = position
+        self.color = color
         self.mode = mode
     }
     

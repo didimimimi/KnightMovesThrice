@@ -14,7 +14,10 @@ protocol ChessboardMainViewModelDelegate: AnyObject {
 class ChessboardMainViewModel: ChessboardMainIntents {
     
     private var chessboard = Chessboard(size: 8)
-    private var mode = ChessboardSquareMode.knight
+    private var mode = ChessboardSpecialSquareMode.knight
+    
+    private var currentKnightSquare = ChessboardSquare()
+    private var currentGoalSquare = ChessboardSquare()
     
     private weak var delegate: ChessboardMainViewModelDelegate?
     
@@ -26,14 +29,36 @@ class ChessboardMainViewModel: ChessboardMainIntents {
     init() {}
     
     func squareTapped(square: ChessboardSquare) {
-        square.mode = self.mode
+        var oldSquare = ChessboardSquare()
+        
+        switch self.mode {
+        case .knight:
+            let currentKnightPosition = self.currentKnightSquare.position
+            self.chessboard.board[currentKnightPosition.row][currentKnightPosition.column].mode = .none
+            
+            square.mode = .knight
+            
+            oldSquare = currentKnightSquare
+            self.currentKnightSquare = square
+        case .goal:
+            let currentGoalPosition = self.currentGoalSquare.position
+            self.chessboard.board[currentGoalPosition.row][currentGoalPosition.column].mode = .none
+            
+            square.mode = .goal
+            
+            oldSquare = currentGoalSquare
+            self.currentGoalSquare = square
+        case .none:
+            break
+        }
 
-        self.delegate?.update(state: .newSquareState(square: square))
+        self.delegate?.update(state: .newSquareState(newSquare: square, oldSquare: oldSquare))
     }
     
     func sliderDragged(to value: Float) {
         let roundedValue = lroundf(value)
         self.chessboard.size = roundedValue
+        self.resetSpecialCurrentSquares()
         
         self.delegate?.update(state: .sliderValueChangedState(value: Float(roundedValue)))
         self.delegate?.update(state: .newChessboardState(chessboard: self.chessboard))
@@ -49,6 +74,13 @@ class ChessboardMainViewModel: ChessboardMainIntents {
     
     func resetButtonTapped() {
         self.chessboard.size = self.chessboard.size // setting the size will redraw the chessboard
+        self.resetSpecialCurrentSquares()
+        
         self.delegate?.update(state: .newChessboardState(chessboard: self.chessboard))
+    }
+    
+    private func resetSpecialCurrentSquares() {
+        self.currentKnightSquare = ChessboardSquare()
+        self.currentGoalSquare = ChessboardSquare()
     }
 }

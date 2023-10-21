@@ -45,10 +45,13 @@ class ChessSquareCollectionViewCell: UICollectionViewCell {
             self.updateSquareUI(backgroundColor: .lightGray, markerText: "Knight", textColor: .black)
         case .goal:
             self.updateSquareUI(backgroundColor: .green, markerText: "Goal", textColor: .black)
-        case .black:
-            self.updateSquareUI(backgroundColor: .black, markerText: nil, textColor: .white)
-        case .white:
-            self.updateSquareUI(backgroundColor: .white, markerText: nil, textColor: .black)
+        case .none:
+            switch square.color {
+            case .black:
+                self.updateSquareUI(backgroundColor: .black, markerText: nil, textColor: .white)
+            case .white:
+                self.updateSquareUI(backgroundColor: .white, markerText: nil, textColor: .black)
+            }
         }
     }
     
