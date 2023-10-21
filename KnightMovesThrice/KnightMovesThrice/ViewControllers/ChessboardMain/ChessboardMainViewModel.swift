@@ -40,9 +40,7 @@ class ChessboardMainViewModel: ChessboardMainIntents {
     }
     
     func switchToogled(to value: Bool) {
-        self.mode = value ? .goal : .knight
-        
-        self.delegate?.update(state: .modeChangedState(mode: self.mode))
+        self.mode = value ? .goal : .knight        
     }
     
     func findPathButtonTapped() {
@@ -50,6 +48,7 @@ class ChessboardMainViewModel: ChessboardMainIntents {
     }
     
     func resetButtonTapped() {
-        
+        self.chessboard.size = self.chessboard.size // setting the size will redraw the chessboard
+        self.delegate?.update(state: .newChessboardState(chessboard: self.chessboard))
     }
 }

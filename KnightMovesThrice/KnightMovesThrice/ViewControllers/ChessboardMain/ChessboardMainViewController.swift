@@ -12,6 +12,8 @@ class ChessboardMainViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var boardSizeSlider: UISlider!
     @IBOutlet weak var modeSwitch: UISwitch!
+    @IBOutlet weak var findPathButton: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
     
     private var viewModel = ChessboardMainViewModel()
     
@@ -27,11 +29,12 @@ class ChessboardMainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.setupCollectionView()
         self.setupCollectionViewFlowLayout()
         self.setupSlider()
         self.setupSwitch()
+        self.setupButtons()
         self.setupViewModel()
     }
     
@@ -66,6 +69,21 @@ class ChessboardMainViewController: UIViewController {
         self.modeSwitch.layer.cornerRadius = 16
     }
     
+    private func setupButtons() {
+        self.findPathButton.backgroundColor = .blue
+        self.findPathButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+        self.findPathButton.layer.cornerRadius = 8
+        
+        self.resetButton.backgroundColor = .clear
+        self.resetButton.layer.borderColor = UIColor.red.cgColor
+        self.resetButton.tintColor = .red
+        self.resetButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .regular)
+        self.resetButton.layer.cornerRadius = 8
+        self.resetButton.layer.borderWidth = 1
+        
+        self.resetButton.setNeedsLayout()
+    }
+    
     private func setupViewModel() {
         self.viewModel = ChessboardMainViewModel(delegate: self)
     }
@@ -76,6 +94,15 @@ class ChessboardMainViewController: UIViewController {
     
     @IBAction func switchTapped(_ sender: UISwitch) {
         self.viewModel.switchToogled(to: sender.isOn)
+    }
+    
+    @IBAction func findPathButtonTapped(_ sender: Any) {
+        self.viewModel.findPathButtonTapped()
+    }
+    
+    
+    @IBAction func resetBoardButtonTapped(_ sender: Any) {
+        self.viewModel.resetButtonTapped()
     }
 }
 
@@ -132,8 +159,6 @@ extension ChessboardMainViewController: ChessboardMainViewModelDelegate {
             self.handleNewChessboardState(chessboard: chessboard)
         case .sliderValueChangedState(let value):
             self.handleSliderValueChangedState(value: value)
-        case .modeChangedState(let mode):
-            self.handleModeChangedState(mode: mode)
         case .newSquareState(let square):
             self.handleNewSquareState(square: square)
         case .drawPathState:
@@ -150,10 +175,6 @@ extension ChessboardMainViewController: ChessboardMainViewModelDelegate {
     
     private func handleSliderValueChangedState(value: Float) {
         self.boardSizeSlider.setValue(value, animated: true)
-    }
-    
-    private func handleModeChangedState(mode: ChessboardSquareMode) {
-        
     }
     
     private func handleNewSquareState(square: ChessboardSquare) {
