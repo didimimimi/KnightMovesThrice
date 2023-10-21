@@ -54,8 +54,12 @@ class ChessSquareCollectionViewCell: UICollectionViewCell {
             }
         case .solutionStep(let title):
             self.updateSquareUI(backgroundColor: .blue, markerText: title, textColor: .white)
-        case .pathStep:
+        case .pathStep1:
             self.updateSquareUI(backgroundColor: .lightGray, markerText: nil)
+        case .pathStep2:
+            self.updateSquareUI(backgroundColor: .gray, markerText: nil)
+        case .pathStep3:
+            self.updateSquareUI(backgroundColor: .darkGray, markerText: nil)
         }
     }
     

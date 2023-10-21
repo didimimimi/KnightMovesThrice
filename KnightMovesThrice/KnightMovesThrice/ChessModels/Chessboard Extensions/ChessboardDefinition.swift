@@ -31,7 +31,7 @@ class Chessboard {
         self.board.forEach({ chessRow in
             chessRow.forEach({ square in
                 switch square.type {
-                case .solutionStep(_), .pathStep:
+                case .solutionStep(_), .pathStep1, .pathStep2, .pathStep3:
                     square.type = .none
                 default:
                     break
@@ -51,8 +51,6 @@ class Chessboard {
     private func getKnightOrGoalInBoard(type: ChessboardSquareType) -> ChessboardSquare? {
         switch type {
         case .knight, .goal:
-            var knightOrGoalSquare: ChessboardSquare?
-            
             for chessRow in self.board {
                 for square in chessRow {
                     if square.type == type {
@@ -61,7 +59,7 @@ class Chessboard {
                 }
             }
             
-            return knightOrGoalSquare
+            return nil
         default:
             return nil
         }

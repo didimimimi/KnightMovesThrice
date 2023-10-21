@@ -16,7 +16,9 @@ enum ChessboardSquareType: Equatable {
     case knight
     case goal
     case solutionStep(title: String)
-    case pathStep
+    case pathStep1
+    case pathStep2
+    case pathStep3
     case none
 }
 

@@ -163,6 +163,8 @@ extension ChessboardMainViewController: ChessboardMainViewModelDelegate {
             self.handleNewSquareState(newSquare: newSquare, oldSquare: oldSquare)
         case .noPathState:
             self.handleNoPathState()
+        case .resetSwitchState:
+            self.handleResetSwitchState()
         case .dummyState:
             break
         }
@@ -197,6 +199,10 @@ extension ChessboardMainViewController: ChessboardMainViewModelDelegate {
         alert.addAction(okayAction)
         
         self.present(alert, animated: true)
+    }
+    
+    private func handleResetSwitchState() {
+        self.modeSwitch.isOn = false
     }
 }
 

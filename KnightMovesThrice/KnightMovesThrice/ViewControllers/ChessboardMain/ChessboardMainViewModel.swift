@@ -91,12 +91,14 @@ class ChessboardMainViewModel: ChessboardMainIntents {
         
         self.chessboard.addIntermediatePointsToPath(with: finalPointsAndMoves.finalPoints, and: finalPointsAndMoves.moves)
         self.delegate?.update(state: .newChessboardState(chessboard: self.chessboard))
+        self.resetToKnightMode()
     }
     
     func resetButtonTapped() {
         self.chessboard.size = self.chessboard.size // setting the size will redraw the chessboard
         
         self.delegate?.update(state: .newChessboardState(chessboard: self.chessboard))
+        self.resetToKnightMode()
     }
     
     private func clearOldSolution() {
@@ -104,5 +106,10 @@ class ChessboardMainViewModel: ChessboardMainIntents {
 
         // update to remove old solution
         self.delegate?.update(state: .newChessboardState(chessboard: self.chessboard))
+    }
+    
+    private func resetToKnightMode() {
+        self.mode = .placeKnight
+        self.delegate?.update(state: .resetSwitchState)
     }
 }
