@@ -24,9 +24,13 @@ class Chessboard {
         }
     }
     
-    init(size: Int = 8) {
+    init(size: Int) {
         self.size = size
         self.createChessboard()
+    }
+    
+    init() {
+        self.size = 0
     }
     
     private func createChessboard() {

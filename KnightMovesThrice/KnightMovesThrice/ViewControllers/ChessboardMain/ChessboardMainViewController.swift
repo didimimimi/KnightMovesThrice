@@ -13,8 +13,9 @@ class ChessboardMainViewController: UIViewController {
     @IBOutlet weak var boardSizeSlider: UISlider!
     @IBOutlet weak var modeSwitch: UISwitch!
     
-    var chessboard = Chessboard()
-    var mode = ChessboardSquareMode.knight
+    private var viewModel = ChessboardMainViewModel()
+    
+    var chessboard = Chessboard(size: 2)
     
     init() {
         super.init(nibName: "ChessboardMainViewController", bundle: .main)
@@ -31,6 +32,7 @@ class ChessboardMainViewController: UIViewController {
         self.setupCollectionViewFlowLayout()
         self.setupSlider()
         self.setupSwitch()
+        self.setupViewModel()
     }
     
     private func setupCollectionView() {
@@ -63,17 +65,17 @@ class ChessboardMainViewController: UIViewController {
         self.modeSwitch.onTintColor = .green
         self.modeSwitch.layer.cornerRadius = 16
     }
+    
+    private func setupViewModel() {
+        self.viewModel = ChessboardMainViewModel(delegate: self)
+    }
 
     @IBAction func sliderMoved(_ sender: UISlider) {
-        let roundedValue = lroundf(self.boardSizeSlider.value)
-        sender.setValue(Float(roundedValue), animated: true)
-        
-        self.chessboard.size = roundedValue
-        self.collectionView.reloadData()
+        self.viewModel.sliderDragged(to: sender.value)
     }
     
     @IBAction func switchTapped(_ sender: UISwitch) {
-        self.mode = sender.isOn ? .goal : .knight
+        self.viewModel.switchToogled(to: sender.isOn)
     }
 }
 
@@ -119,11 +121,49 @@ extension ChessboardMainViewController: UICollectionViewDelegate, UICollectionVi
 
 extension ChessboardMainViewController: ChessSquareCollectionViewCellDelegate {
     func squaredTapped(_ square: ChessboardSquare) {
-        square.mode = self.mode
+        self.viewModel.squareTapped(square: square)
+    }
+}
+
+extension ChessboardMainViewController: ChessboardMainViewModelDelegate {
+    func update(state: ChessboardMainStates) {
+        switch state {
+        case .newChessboardState(let chessboard):
+            self.handleNewChessboardState(chessboard: chessboard)
+        case .sliderValueChangedState(let value):
+            self.handleSliderValueChangedState(value: value)
+        case .modeChangedState(let mode):
+            self.handleModeChangedState(mode: mode)
+        case .newSquareState(let square):
+            self.handleNewSquareState(square: square)
+        case .drawPathState:
+            self.handleDrawPathState()
+        case .dummyState:
+            break
+        }
+    }
+    
+    private func handleNewChessboardState(chessboard: Chessboard) {
+        self.chessboard = chessboard
+        self.collectionView.reloadData()
+    }
+    
+    private func handleSliderValueChangedState(value: Float) {
+        self.boardSizeSlider.setValue(value, animated: true)
+    }
+    
+    private func handleModeChangedState(mode: ChessboardSquareMode) {
         
+    }
+    
+    private func handleNewSquareState(square: ChessboardSquare) {
         UIView.performWithoutAnimation {
             self.collectionView.reloadItems(at: [IndexPath(item: square.position.column, section: square.position.row)])
         }
+    }
+    
+    private func handleDrawPathState() {
+        
     }
 }
 
