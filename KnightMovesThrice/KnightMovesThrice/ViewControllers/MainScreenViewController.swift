@@ -11,9 +11,10 @@ class MainScreenViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var boardSizeSlider: UISlider!
+    @IBOutlet weak var modeSwitch: UISwitch!
     
     var chessboard = Chessboard()
-    
+    var mode = ChessboardSquareMode.knight
     init() {
         super.init(nibName: "MainScreenViewController", bundle: .main)
     }
@@ -28,6 +29,7 @@ class MainScreenViewController: UIViewController {
         self.setupCollectionView()
         self.setupCollectionViewFlowLayout()
         self.setupSlider()
+        self.setupSwitch()
     }
     
     private func setupCollectionView() {
@@ -46,7 +48,6 @@ class MainScreenViewController: UIViewController {
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         
-//        layout.itemSize = CGSize(width: squareSize, height: squareSize)
         self.collectionView.setCollectionViewLayout(layout, animated: true)
     }
     
@@ -55,13 +56,23 @@ class MainScreenViewController: UIViewController {
         self.boardSizeSlider.value = Float(self.chessboard.size)
     }
     
+    private func setupSwitch() {
+        self.modeSwitch.isOn = false
+        self.modeSwitch.backgroundColor = .lightGray
+        self.modeSwitch.onTintColor = .green
+        self.modeSwitch.layer.cornerRadius = 16
+    }
+
     @IBAction func sliderMoved(_ sender: UISlider) {
         let roundedValue = lroundf(self.boardSizeSlider.value)
         sender.setValue(Float(roundedValue), animated: true)
         
         self.chessboard.size = roundedValue
         self.collectionView.reloadData()
-//        self.setupCollectionViewFlowLayout()
+    }
+    
+    @IBAction func switchTapped(_ sender: UISwitch) {
+        self.mode = sender.isOn ? .goal : .knight
     }
 }
 
@@ -107,7 +118,7 @@ extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDa
 
 extension MainScreenViewController: ChessSquareCollectionViewCellDelegate {
     func squaredTapped(_ square: ChessboardSquare) {
-        square.mode = .knight
+        square.mode = self.mode
         
         UIView.performWithoutAnimation {
             self.collectionView.reloadItems(at: [IndexPath(item: square.position.column, section: square.position.row)])
