@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ChessSquareCollectionViewCellDelegate: AnyObject {
-    func squaredTapped(_ square: ChessBoardSquare)
+    func squaredTapped(_ square: ChessboardSquare)
 }
 
 class ChessSquareCollectionViewCell: UICollectionViewCell {
@@ -16,7 +16,7 @@ class ChessSquareCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var markerLabel: UILabel!
     
-    private var square = ChessBoardSquare()
+    private var square = ChessboardSquare()
     private weak var delegate: ChessSquareCollectionViewCellDelegate?
     static let cellId = "ChessSquareCollectionViewCell"
     
@@ -33,7 +33,7 @@ class ChessSquareCollectionViewCell: UICollectionViewCell {
         super.init(coder: coder)
     }
     
-    func update(square: ChessBoardSquare, delegate: ChessSquareCollectionViewCellDelegate) {
+    func update(square: ChessboardSquare, delegate: ChessSquareCollectionViewCellDelegate) {
         self.square = square
         self.delegate = delegate
         

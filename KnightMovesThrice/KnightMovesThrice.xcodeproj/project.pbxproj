@@ -15,7 +15,7 @@
 		340877852AE1DF8000547BBE /* KnightMovesThriceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340877842AE1DF8000547BBE /* KnightMovesThriceTests.swift */; };
 		3408778F2AE1DF8000547BBE /* KnightMovesThriceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3408778E2AE1DF8000547BBE /* KnightMovesThriceUITests.swift */; };
 		340877912AE1DF8000547BBE /* KnightMovesThriceUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340877902AE1DF8000547BBE /* KnightMovesThriceUITestsLaunchTests.swift */; };
-		3408779E2AE1E32300547BBE /* KnightHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3408779D2AE1E32300547BBE /* KnightHelper.swift */; };
+		3408779E2AE1E32300547BBE /* ChessboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3408779D2AE1E32300547BBE /* ChessboardHelper.swift */; };
 		34DF42482AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DF42462AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.swift */; };
 		34DF42492AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34DF42472AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.xib */; };
 		34DF424C2AE2E3BD0069B1B6 /* MainScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34DF424B2AE2E3BD0069B1B6 /* MainScreenViewController.xib */; };
@@ -51,7 +51,7 @@
 		3408778A2AE1DF8000547BBE /* KnightMovesThriceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KnightMovesThriceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3408778E2AE1DF8000547BBE /* KnightMovesThriceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightMovesThriceUITests.swift; sourceTree = "<group>"; };
 		340877902AE1DF8000547BBE /* KnightMovesThriceUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightMovesThriceUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		3408779D2AE1E32300547BBE /* KnightHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightHelper.swift; sourceTree = "<group>"; };
+		3408779D2AE1E32300547BBE /* ChessboardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessboardHelper.swift; sourceTree = "<group>"; };
 		34DF42462AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessSquareCollectionViewCell.swift; sourceTree = "<group>"; };
 		34DF42472AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChessSquareCollectionViewCell.xib; sourceTree = "<group>"; };
 		34DF424B2AE2E3BD0069B1B6 /* MainScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainScreenViewController.xib; sourceTree = "<group>"; };
@@ -112,7 +112,7 @@
 				340877762AE1DF7F00547BBE /* Assets.xcassets */,
 				340877782AE1DF7F00547BBE /* LaunchScreen.storyboard */,
 				3408777B2AE1DF7F00547BBE /* Info.plist */,
-				3408779D2AE1E32300547BBE /* KnightHelper.swift */,
+				3408779D2AE1E32300547BBE /* ChessboardHelper.swift */,
 			);
 			path = KnightMovesThrice;
 			sourceTree = "<group>";
@@ -287,7 +287,7 @@
 				340877722AE1DF7D00547BBE /* MainScreenViewController.swift in Sources */,
 				34DF42482AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.swift in Sources */,
 				3408776E2AE1DF7D00547BBE /* AppDelegate.swift in Sources */,
-				3408779E2AE1E32300547BBE /* KnightHelper.swift in Sources */,
+				3408779E2AE1E32300547BBE /* ChessboardHelper.swift in Sources */,
 				340877702AE1DF7D00547BBE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
