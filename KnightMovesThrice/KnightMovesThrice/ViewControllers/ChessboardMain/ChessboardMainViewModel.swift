@@ -14,7 +14,7 @@ protocol ChessboardMainViewModelDelegate: AnyObject {
 class ChessboardMainViewModel: ChessboardMainIntents {
     
     private var chessboard = Chessboard(size: 8)
-    private var type = ChessboardSquareType.knight
+    private var mode = ChessboardMode.placeKnight
     
     private var currentKnightSquare = ChessboardSquare(position: ChessboardSquarePosition(), color: .white, type: .knight)
     private var currentGoalSquare = ChessboardSquare(position: ChessboardSquarePosition(), color: .white, type: .goal)
@@ -29,30 +29,62 @@ class ChessboardMainViewModel: ChessboardMainIntents {
     init() {}
     
     func squareTapped(square: ChessboardSquare) {
+        self.chessboard.clearSolutionAndPath()
+
+        // update to remove old solution
+        self.delegate?.update(state: .newChessboardState(chessboard: self.chessboard))
+
+        var newSquare = square
         var oldSquare = ChessboardSquare()
-        
-        switch self.type {
-        case .knight:
-            let currentKnightPosition = self.currentKnightSquare.position
-            self.chessboard.board[currentKnightPosition.row][currentKnightPosition.column].type = .none
-            
-            square.type = .knight
-            
-            oldSquare = currentKnightSquare
-            self.currentKnightSquare = square
+
+        switch square.type {
         case .goal:
-            let currentGoalPosition = self.currentGoalSquare.position
-            self.chessboard.board[currentGoalPosition.row][currentGoalPosition.column].type = .none
-            
-            square.type = .goal
-            
-            oldSquare = currentGoalSquare
-            self.currentGoalSquare = square
+            if self.mode == .placeKnight {
+                let currentKnightPosition = self.currentKnightSquare.position
+
+                let squareCurrentlyOnBoard = self.chessboard.board[currentKnightPosition.row][currentKnightPosition.column]
+//                if squareCurrentlyOnBoard.type
+
+            }
+        case .knight:
+            if self.mode == .placeGoal {
+
+            }
+        case .none:
+            if self.mode == .placeKnight {
+
+            } else {
+
+            }
         default:
             break
         }
 
-        self.delegate?.update(state: .newSquareState(newSquare: square, oldSquare: oldSquare))
+        self.delegate?.update(state: .newSquareState(newSquare: newSquare, oldSquare: oldSquare))
+        
+//        switch self.mode {
+//        case .placeKnight:
+//            let currentKnightPosition = self.currentKnightSquare.position
+//
+//            self.chessboard.board[currentKnightPosition.row][currentKnightPosition.column].type = .none
+//
+//            square.type = .knight
+//
+//            oldSquare = currentKnightSquare
+//            self.currentKnightSquare = square
+//
+//        case .placeGoal:
+//            let currentGoalPosition = self.currentGoalSquare.position
+//            self.chessboard.board[currentGoalPosition.row][currentGoalPosition.column].type = .none
+//
+//            square.type = .goal
+//
+//            oldSquare = currentGoalSquare
+//            self.currentGoalSquare = square
+//
+//        }
+//
+//        self.delegate?.update(state: .newSquareState(newSquare: newSquare, oldSquare: oldSquare))
     }
     
     func sliderDragged(to value: Float) {
@@ -65,12 +97,12 @@ class ChessboardMainViewModel: ChessboardMainIntents {
     }
     
     func switchToogled(to value: Bool) {
-        self.type = value ? .goal : .knight        
+        self.mode = value ? .placeGoal : .placeKnight
     }
     
     func findPathButtonTapped() {
         guard let finalPointsAndMoves = self.chessboard.findThreeMovesPath(from: self.currentKnightSquare,
-                                                                   to: self.currentGoalSquare) else {
+                                                                           to: self.currentGoalSquare) else {
             self.delegate?.update(state: .noPathState)
             return
         }

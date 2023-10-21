@@ -15,13 +15,16 @@
 		340877852AE1DF8000547BBE /* KnightMovesThriceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340877842AE1DF8000547BBE /* KnightMovesThriceTests.swift */; };
 		3408778F2AE1DF8000547BBE /* KnightMovesThriceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3408778E2AE1DF8000547BBE /* KnightMovesThriceUITests.swift */; };
 		340877912AE1DF8000547BBE /* KnightMovesThriceUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340877902AE1DF8000547BBE /* KnightMovesThriceUITestsLaunchTests.swift */; };
-		3408779E2AE1E32300547BBE /* Chessboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3408779D2AE1E32300547BBE /* Chessboard.swift */; };
+		3408779E2AE1E32300547BBE /* ChessboardDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3408779D2AE1E32300547BBE /* ChessboardDefinition.swift */; };
 		3414CE952AE3F7C200099EF8 /* ChessboardMainStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414CE942AE3F7C200099EF8 /* ChessboardMainStates.swift */; };
 		3414CE972AE3F7D000099EF8 /* ChessboardMainIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414CE962AE3F7D000099EF8 /* ChessboardMainIntents.swift */; };
 		3414CE992AE3F7D900099EF8 /* ChessboardMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414CE982AE3F7D900099EF8 /* ChessboardMainViewModel.swift */; };
 		3414CE9C2AE4396700099EF8 /* ChessboardEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414CE9B2AE4396700099EF8 /* ChessboardEnums.swift */; };
 		3414CE9E2AE4399500099EF8 /* ChessboardSquarePosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414CE9D2AE4399500099EF8 /* ChessboardSquarePosition.swift */; };
 		3414CEA02AE439B600099EF8 /* ChessboardSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414CE9F2AE439B600099EF8 /* ChessboardSquare.swift */; };
+		3414CEA42AE46D7D00099EF8 /* ChessboardCreationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414CEA22AE46CFA00099EF8 /* ChessboardCreationExtension.swift */; };
+		3414CEA62AE46E9700099EF8 /* ChessboardThreeMovesExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414CEA52AE46E9700099EF8 /* ChessboardThreeMovesExtension.swift */; };
+		3414CEA82AE46EBE00099EF8 /* ChessboardDrawPathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414CEA72AE46EBE00099EF8 /* ChessboardDrawPathExtension.swift */; };
 		34DF42482AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DF42462AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.swift */; };
 		34DF42492AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34DF42472AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.xib */; };
 		34DF424C2AE2E3BD0069B1B6 /* ChessboardMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34DF424B2AE2E3BD0069B1B6 /* ChessboardMainViewController.xib */; };
@@ -57,13 +60,16 @@
 		3408778A2AE1DF8000547BBE /* KnightMovesThriceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KnightMovesThriceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3408778E2AE1DF8000547BBE /* KnightMovesThriceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightMovesThriceUITests.swift; sourceTree = "<group>"; };
 		340877902AE1DF8000547BBE /* KnightMovesThriceUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightMovesThriceUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		3408779D2AE1E32300547BBE /* Chessboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chessboard.swift; sourceTree = "<group>"; };
+		3408779D2AE1E32300547BBE /* ChessboardDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessboardDefinition.swift; sourceTree = "<group>"; };
 		3414CE942AE3F7C200099EF8 /* ChessboardMainStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessboardMainStates.swift; sourceTree = "<group>"; };
 		3414CE962AE3F7D000099EF8 /* ChessboardMainIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessboardMainIntents.swift; sourceTree = "<group>"; };
 		3414CE982AE3F7D900099EF8 /* ChessboardMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessboardMainViewModel.swift; sourceTree = "<group>"; };
 		3414CE9B2AE4396700099EF8 /* ChessboardEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessboardEnums.swift; sourceTree = "<group>"; };
 		3414CE9D2AE4399500099EF8 /* ChessboardSquarePosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessboardSquarePosition.swift; sourceTree = "<group>"; };
 		3414CE9F2AE439B600099EF8 /* ChessboardSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessboardSquare.swift; sourceTree = "<group>"; };
+		3414CEA22AE46CFA00099EF8 /* ChessboardCreationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessboardCreationExtension.swift; sourceTree = "<group>"; };
+		3414CEA52AE46E9700099EF8 /* ChessboardThreeMovesExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessboardThreeMovesExtension.swift; sourceTree = "<group>"; };
+		3414CEA72AE46EBE00099EF8 /* ChessboardDrawPathExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessboardDrawPathExtension.swift; sourceTree = "<group>"; };
 		34DF42462AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessSquareCollectionViewCell.swift; sourceTree = "<group>"; };
 		34DF42472AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChessSquareCollectionViewCell.xib; sourceTree = "<group>"; };
 		34DF424B2AE2E3BD0069B1B6 /* ChessboardMainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChessboardMainViewController.xib; sourceTree = "<group>"; };
@@ -161,12 +167,23 @@
 		3414CE9A2AE4392D00099EF8 /* ChessModels */ = {
 			isa = PBXGroup;
 			children = (
-				3408779D2AE1E32300547BBE /* Chessboard.swift */,
+				3414CEA12AE46CA800099EF8 /* Chessboard Extensions */,
 				3414CE9B2AE4396700099EF8 /* ChessboardEnums.swift */,
 				3414CE9D2AE4399500099EF8 /* ChessboardSquarePosition.swift */,
 				3414CE9F2AE439B600099EF8 /* ChessboardSquare.swift */,
 			);
 			path = ChessModels;
+			sourceTree = "<group>";
+		};
+		3414CEA12AE46CA800099EF8 /* Chessboard Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3408779D2AE1E32300547BBE /* ChessboardDefinition.swift */,
+				3414CEA22AE46CFA00099EF8 /* ChessboardCreationExtension.swift */,
+				3414CEA52AE46E9700099EF8 /* ChessboardThreeMovesExtension.swift */,
+				3414CEA72AE46EBE00099EF8 /* ChessboardDrawPathExtension.swift */,
+			);
+			path = "Chessboard Extensions";
 			sourceTree = "<group>";
 		};
 		34DF42452AE2DA8B0069B1B6 /* CollectionViewCells */ = {
@@ -318,15 +335,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3414CEA42AE46D7D00099EF8 /* ChessboardCreationExtension.swift in Sources */,
 				340877722AE1DF7D00547BBE /* ChessboardMainViewController.swift in Sources */,
 				34DF42482AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.swift in Sources */,
 				3414CE972AE3F7D000099EF8 /* ChessboardMainIntents.swift in Sources */,
+				3414CEA82AE46EBE00099EF8 /* ChessboardDrawPathExtension.swift in Sources */,
+				3414CEA62AE46E9700099EF8 /* ChessboardThreeMovesExtension.swift in Sources */,
 				3414CEA02AE439B600099EF8 /* ChessboardSquare.swift in Sources */,
 				3414CE9E2AE4399500099EF8 /* ChessboardSquarePosition.swift in Sources */,
 				3414CE952AE3F7C200099EF8 /* ChessboardMainStates.swift in Sources */,
 				3408776E2AE1DF7D00547BBE /* AppDelegate.swift in Sources */,
 				3414CE9C2AE4396700099EF8 /* ChessboardEnums.swift in Sources */,
-				3408779E2AE1E32300547BBE /* Chessboard.swift in Sources */,
+				3408779E2AE1E32300547BBE /* ChessboardDefinition.swift in Sources */,
 				340877702AE1DF7D00547BBE /* SceneDelegate.swift in Sources */,
 				3414CE992AE3F7D900099EF8 /* ChessboardMainViewModel.swift in Sources */,
 			);

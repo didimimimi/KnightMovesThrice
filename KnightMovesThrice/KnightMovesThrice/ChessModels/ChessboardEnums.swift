@@ -12,10 +12,15 @@ enum ChessboardSquareColor {
     case white
 }
 
-enum ChessboardSquareType {
+enum ChessboardSquareType: Equatable {
     case knight
     case goal
     case solutionStep(title: String)
     case pathStep
     case none
+}
+
+enum ChessboardMode {
+    case placeKnight
+    case placeGoal
 }
