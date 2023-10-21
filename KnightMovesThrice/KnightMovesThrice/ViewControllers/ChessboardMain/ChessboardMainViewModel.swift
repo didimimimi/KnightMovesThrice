@@ -69,7 +69,14 @@ class ChessboardMainViewModel: ChessboardMainIntents {
     }
     
     func findPathButtonTapped() {
+        guard let path = self.chessboard.findThreeMovesPath(from: self.currentKnightSquare, to: self.currentGoalSquare) else {
+            self.delegate?.update(state: .noPathState)
+            return
+        }
         
+        path.forEach({
+            print($0.description)
+        })
     }
     
     func resetButtonTapped() {

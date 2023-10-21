@@ -73,8 +73,47 @@ class Chessboard {
         return squaresInRow
     }
     
-    func getOriginalColor(of square: ChessboardSquare) {
+    private func isWithinValidBounds(row: Int, column: Int) -> Bool {
+        let validBounds = 0..<self.size
+        return validBounds.contains(row) && validBounds.contains(column)
+    }
+    
+    func findThreeMovesPath(from knightSquare: ChessboardSquare, to goalSquare: ChessboardSquare) -> [ChessboardSquare]? {
+        let knightMoves = [(2, 1), (2, -1), (1, 2), (1, -2), (-2, 1), (-2, -1), (-1, 2), (-1, -2)]
         
+        var visited = Set<ChessboardSquare>()
+        var queue = [(knightSquare, [knightSquare])] // Each queue item now includes the position and the path to reach that position.
+        
+        for _ in 0..<3 {
+            var nextQueue = [(ChessboardSquare, [ChessboardSquare])]()
+            
+            while !queue.isEmpty {
+                let (current, path) = queue.removeFirst()
+                
+                for (dx, dy) in knightMoves {
+                    let newX = current.position.row + dx
+                    let newY = current.position.column + dy
+                    
+                    if isWithinValidBounds(row: newX, column: newY) {
+                        let nextPoint = self.board[newX][newY]
+                        
+                        if !visited.contains(nextPoint) {
+                            if nextPoint == goalSquare {
+                                // The destination is reachable, return the full path.
+                                return path + [nextPoint]
+                            }
+                            
+                            visited.insert(nextPoint)
+                            nextQueue.append((nextPoint, path + [nextPoint]))
+                        }
+                    }
+                }
+            }
+            queue = nextQueue
+        }
+        
+        // If no path is found, return nil.
+        return nil
     }
 }
 

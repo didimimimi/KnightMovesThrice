@@ -163,6 +163,8 @@ extension ChessboardMainViewController: ChessboardMainViewModelDelegate {
             self.handleNewSquareState(newSquare: newSquare, oldSquare: oldSquare)
         case .drawPathState:
             self.handleDrawPathState()
+        case .noPathState:
+            self.handleNoPathState()
         case .dummyState:
             break
         }
@@ -188,6 +190,16 @@ extension ChessboardMainViewController: ChessboardMainViewModelDelegate {
     
     private func handleDrawPathState() {
         
+    }
+    
+    private func handleNoPathState() {
+        let alert = UIAlertController(title: "Goal unreachable",
+                                      message: "It's impossible to reach the goal from the knight's starting position",
+                                      preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "Okay", style: .default)
+        alert.addAction(okayAction)
+        
+        self.present(alert, animated: true)
     }
 }
 
