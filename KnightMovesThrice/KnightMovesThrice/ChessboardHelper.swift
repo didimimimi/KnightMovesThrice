@@ -15,16 +15,32 @@ enum ChessboardSquareMode {
 }
 
 typealias ChessboardRow = [ChessboardSquare]
-typealias Chessboard = [ChessboardRow]
 
-struct ChessboardSquare: Hashable {
+struct Chessboard {
+    var board = [ChessboardRow]()
+    var size: Int
+    
+    init(size: Int = 8) {
+        self.size = size
+    }
+}
+
+class ChessboardSquare: Hashable {
     
     var position = ChessboardSquarePosition()
     var mode = ChessboardSquareMode.white
     
     var description: String {
-        return "Position: \(position.description), mode: \(mode)"
+        return "Position: \(position.description), Mode: \(mode)"
     }
+    
+    init(position: ChessboardSquarePosition, mode: ChessboardSquareMode) {
+        self.position = position
+        self.mode = mode
+    }
+    
+    init() {}
+    
     static func == (lhs: ChessboardSquare, rhs: ChessboardSquare) -> Bool {
         return lhs.position == rhs.position
     }
@@ -34,41 +50,41 @@ struct ChessboardSquare: Hashable {
     }
 }
 
-struct ChessboardSquarePosition: Hashable {
-    let theRow: Int
-    let theColumn: Int
+class ChessboardSquarePosition: Hashable {
+    let row: Int
+    let column: Int
     
     var description: String {
-        return "Row: \(theRow + 1), Column: \(theColumn + 1)"
+        return "Row: \(row + 1), Column: \(column + 1)"
     }
     
     init() {
-        theRow = 0
-        theColumn = 0
+        row = 0
+        column = 0
     }
     
     init(row: Int, column: Int) {
-        theRow = row
-        theColumn = column
+        self.row = row
+        self.column = column
     }
     
     static func == (lhs: ChessboardSquarePosition, rhs: ChessboardSquarePosition) -> Bool {
-        return lhs.theColumn == rhs.theColumn && lhs.theRow == rhs.theRow
+        return lhs.column == rhs.column && lhs.row == rhs.row
     }
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(theRow)
-        hasher.combine(theColumn)
+        hasher.combine(row)
+        hasher.combine(column)
     }
 }
 
 
 class ChessboardHelper {
     func createChessboard(ofSize size: Int) -> Chessboard {
-        var chessboard = Chessboard()
+        var chessboard = Chessboard(size: size)
         
-        for row in 0..<size {
-            chessboard.append(self.createSquares(inRow: row, andChessboardSize: size))
+        for row in 0..<chessboard.size {
+            chessboard.board.append(self.createSquares(inRow: row, andChessboardSize: size))
         }
         
         return chessboard

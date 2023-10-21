@@ -11,8 +11,7 @@ class MainScreenViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var squares: Chessboard = []
-    let boardSize = 8
+    var chessboard = Chessboard()
     
     init() {
         super.init(nibName: "MainScreenViewController", bundle: .main)
@@ -30,7 +29,7 @@ class MainScreenViewController: UIViewController {
     }
     
     private func setUpSquares() {
-        self.squares = ChessboardHelper().createChessboard(ofSize: self.boardSize)
+        self.chessboard = ChessboardHelper().createChessboard(ofSize: self.chessboard.size)
     }
     
     private func setupCollectionView() {
@@ -48,7 +47,7 @@ class MainScreenViewController: UIViewController {
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         let deviceWidth = UIScreen.main.bounds.size.width
-        let squareSize = floor(deviceWidth / CGFloat(self.squares.count))
+        let squareSize = floor(deviceWidth / CGFloat(self.chessboard.size))
         layout.itemSize = CGSize(width: squareSize, height: squareSize)
         self.collectionView.setCollectionViewLayout(layout, animated: true)
     }
@@ -56,15 +55,15 @@ class MainScreenViewController: UIViewController {
 
 extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.squares.count
+        return self.chessboard.size
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.squares[section].count
+        return self.chessboard.board[section].count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let square = self.squares[indexPath.section][indexPath.row]
+        let square = self.chessboard.board[indexPath.section][indexPath.row]
         
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: ChessSquareCollectionViewCell.cellId,
@@ -82,7 +81,12 @@ extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDa
 extension MainScreenViewController: ChessSquareCollectionViewCellDelegate {
     func squaredTapped(_ square: ChessboardSquare) {
         
-        print(square.description)
+        var squareInChessboard = self.chessboard.board[square.position.row][square.position.column]
+        squareInChessboard.mode = .knight
+        
+        UIView.performWithoutAnimation {
+            self.collectionView.reloadItems(at: [IndexPath(item: squareInChessboard.position.column, section: squareInChessboard.position.row)])
+        }
     }
 }
 
