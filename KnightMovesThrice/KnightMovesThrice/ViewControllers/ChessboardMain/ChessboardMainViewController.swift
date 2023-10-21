@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainScreenViewController: UIViewController {
+class ChessboardMainViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var boardSizeSlider: UISlider!
@@ -15,8 +15,9 @@ class MainScreenViewController: UIViewController {
     
     var chessboard = Chessboard()
     var mode = ChessboardSquareMode.knight
+    
     init() {
-        super.init(nibName: "MainScreenViewController", bundle: .main)
+        super.init(nibName: "ChessboardMainViewController", bundle: .main)
     }
     
     required init?(coder: NSCoder) {
@@ -76,7 +77,7 @@ class MainScreenViewController: UIViewController {
     }
 }
 
-extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ChessboardMainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return self.chessboard.size
     }
@@ -116,7 +117,7 @@ extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDa
     }
 }
 
-extension MainScreenViewController: ChessSquareCollectionViewCellDelegate {
+extension ChessboardMainViewController: ChessSquareCollectionViewCellDelegate {
     func squaredTapped(_ square: ChessboardSquare) {
         square.mode = self.mode
         
