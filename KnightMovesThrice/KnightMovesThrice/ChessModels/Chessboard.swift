@@ -59,7 +59,7 @@ class Chessboard {
             }
             
             let position = ChessboardSquarePosition(row: row, column: column)
-            let chessSquare = ChessboardSquare(position: position, color: color, mode: .none)
+            let chessSquare = ChessboardSquare(position: position, color: color, type: .none)
             squaresInRow.append(chessSquare)
         }
         
@@ -191,9 +191,9 @@ class Chessboard {
             }
         }
         
-        switch nextSquare.mode {
+        switch nextSquare.type {
         case .none: // update only empty squares
-            nextSquare.mode = .pathStep
+            nextSquare.type = .pathStep
             squarePosition = nextSquare.position // update the position in order to check the next square
         default:
             break

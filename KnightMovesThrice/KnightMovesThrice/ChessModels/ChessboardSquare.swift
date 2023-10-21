@@ -11,16 +11,16 @@ class ChessboardSquare: Hashable {
     
     var position = ChessboardSquarePosition()
     var color = ChessboardSquareColor.white
-    var mode = ChessboardSpecialSquareMode.none
+    var type = ChessboardSquareType.none
     
     var description: String {
-        return "Position: \(position.description), Mode: \(mode)"
+        return "Position: \(position.description), Type: \(type)"
     }
     
-    init(position: ChessboardSquarePosition, color: ChessboardSquareColor, mode: ChessboardSpecialSquareMode) {
+    init(position: ChessboardSquarePosition, color: ChessboardSquareColor, type: ChessboardSquareType) {
         self.position = position
         self.color = color
-        self.mode = mode
+        self.type = type
     }
     
     init() {}

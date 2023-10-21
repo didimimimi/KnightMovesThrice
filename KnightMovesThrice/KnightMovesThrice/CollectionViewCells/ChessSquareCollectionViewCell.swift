@@ -36,11 +36,11 @@ class ChessSquareCollectionViewCell: UICollectionViewCell {
         self.square = square
         self.delegate = delegate
         
-        self.updateBasedOnSquareMode()
+        self.updateBasedOnSquareType()
     }
     
-    private func updateBasedOnSquareMode() {
-        switch self.square.mode {
+    private func updateBasedOnSquareType() {
+        switch self.square.type {
         case .knight:
             self.updateSquareUI(backgroundColor: .orange, markerText: "Knight", textColor: .black)
         case .goal:

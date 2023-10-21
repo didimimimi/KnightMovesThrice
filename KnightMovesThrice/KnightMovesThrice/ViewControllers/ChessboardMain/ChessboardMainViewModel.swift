@@ -14,10 +14,10 @@ protocol ChessboardMainViewModelDelegate: AnyObject {
 class ChessboardMainViewModel: ChessboardMainIntents {
     
     private var chessboard = Chessboard(size: 8)
-    private var mode = ChessboardSpecialSquareMode.knight
+    private var type = ChessboardSquareType.knight
     
-    private var currentKnightSquare = ChessboardSquare()
-    private var currentGoalSquare = ChessboardSquare()
+    private var currentKnightSquare = ChessboardSquare(position: ChessboardSquarePosition(), color: .white, type: .knight)
+    private var currentGoalSquare = ChessboardSquare(position: ChessboardSquarePosition(), color: .white, type: .goal)
     
     private weak var delegate: ChessboardMainViewModelDelegate?
     
@@ -31,20 +31,20 @@ class ChessboardMainViewModel: ChessboardMainIntents {
     func squareTapped(square: ChessboardSquare) {
         var oldSquare = ChessboardSquare()
         
-        switch self.mode {
+        switch self.type {
         case .knight:
             let currentKnightPosition = self.currentKnightSquare.position
-            self.chessboard.board[currentKnightPosition.row][currentKnightPosition.column].mode = .none
+            self.chessboard.board[currentKnightPosition.row][currentKnightPosition.column].type = .none
             
-            square.mode = .knight
+            square.type = .knight
             
             oldSquare = currentKnightSquare
             self.currentKnightSquare = square
         case .goal:
             let currentGoalPosition = self.currentGoalSquare.position
-            self.chessboard.board[currentGoalPosition.row][currentGoalPosition.column].mode = .none
+            self.chessboard.board[currentGoalPosition.row][currentGoalPosition.column].type = .none
             
-            square.mode = .goal
+            square.type = .goal
             
             oldSquare = currentGoalSquare
             self.currentGoalSquare = square
@@ -65,7 +65,7 @@ class ChessboardMainViewModel: ChessboardMainIntents {
     }
     
     func switchToogled(to value: Bool) {
-        self.mode = value ? .goal : .knight        
+        self.type = value ? .goal : .knight        
     }
     
     func findPathButtonTapped() {
@@ -78,10 +78,10 @@ class ChessboardMainViewModel: ChessboardMainIntents {
         var stepCounter = 1
         
         finalPointsAndMoves.finalPoints.forEach({ stepSquare in
-            switch stepSquare.mode {
+            switch stepSquare.type {
             case .none:
                 let stepSquarePosition = stepSquare.position
-                self.chessboard.board[stepSquarePosition.row][stepSquarePosition.column].mode = .solutionStep(title: "\(stepCounter)")
+                self.chessboard.board[stepSquarePosition.row][stepSquarePosition.column].type = .solutionStep(title: "\(stepCounter)")
                 stepCounter += 1
             default:
                 break

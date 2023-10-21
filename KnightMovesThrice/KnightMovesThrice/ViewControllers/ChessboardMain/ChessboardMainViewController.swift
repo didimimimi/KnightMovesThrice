@@ -32,10 +32,10 @@ class ChessboardMainViewController: UIViewController {
 
         self.setupCollectionView()
         self.setupCollectionViewFlowLayout()
+        self.setupViewModel()
         self.setupSlider()
         self.setupSwitch()
         self.setupButtons()
-        self.setupViewModel()
     }
     
     private func setupCollectionView() {

@@ -12,7 +12,7 @@ enum ChessboardSquareColor {
     case white
 }
 
-enum ChessboardSpecialSquareMode {
+enum ChessboardSquareType {
     case knight
     case goal
     case solutionStep(title: String)
