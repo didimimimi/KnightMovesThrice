@@ -15,9 +15,18 @@ class MainScreenViewController: UIViewController {
     let columnsCount = 8
     let rowsCount = 8
     
+    init() {
+        super.init(nibName: "MainScreenViewController", bundle: .main)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.setUpSquares()
         self.setupCollectionView()
     }
     
@@ -50,7 +59,7 @@ class MainScreenViewController: UIViewController {
         collectionView.register(
             UINib.init(
                 nibName: ChessSquareCollectionViewCell.cellId,
-                bundle: nil
+                bundle: .main
             ),
             forCellWithReuseIdentifier: ChessSquareCollectionViewCell.cellId)
     }

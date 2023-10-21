@@ -30,7 +30,7 @@ class ChessSquareCollectionViewCell: UICollectionViewCell {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
     
     func update(square: ChessBoardSquare, delegate: ChessSquareCollectionViewCellDelegate) {

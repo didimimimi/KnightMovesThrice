@@ -10,7 +10,6 @@
 		3408776E2AE1DF7D00547BBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3408776D2AE1DF7D00547BBE /* AppDelegate.swift */; };
 		340877702AE1DF7D00547BBE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3408776F2AE1DF7D00547BBE /* SceneDelegate.swift */; };
 		340877722AE1DF7D00547BBE /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340877712AE1DF7D00547BBE /* MainScreenViewController.swift */; };
-		340877752AE1DF7D00547BBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 340877732AE1DF7D00547BBE /* Main.storyboard */; };
 		340877772AE1DF7F00547BBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 340877762AE1DF7F00547BBE /* Assets.xcassets */; };
 		3408777A2AE1DF7F00547BBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 340877782AE1DF7F00547BBE /* LaunchScreen.storyboard */; };
 		340877852AE1DF8000547BBE /* KnightMovesThriceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340877842AE1DF8000547BBE /* KnightMovesThriceTests.swift */; };
@@ -44,7 +43,6 @@
 		3408776D2AE1DF7D00547BBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3408776F2AE1DF7D00547BBE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		340877712AE1DF7D00547BBE /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
-		340877742AE1DF7D00547BBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		340877762AE1DF7F00547BBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		340877792AE1DF7F00547BBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3408777B2AE1DF7F00547BBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 				3408776F2AE1DF7D00547BBE /* SceneDelegate.swift */,
 				34DF424A2AE2E2D20069B1B6 /* ViewControllers */,
 				34DF42452AE2DA8B0069B1B6 /* CollectionViewCells */,
-				340877732AE1DF7D00547BBE /* Main.storyboard */,
 				340877762AE1DF7F00547BBE /* Assets.xcassets */,
 				340877782AE1DF7F00547BBE /* LaunchScreen.storyboard */,
 				3408777B2AE1DF7F00547BBE /* Info.plist */,
@@ -262,7 +259,6 @@
 				34DF42492AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.xib in Resources */,
 				3408777A2AE1DF7F00547BBE /* LaunchScreen.storyboard in Resources */,
 				340877772AE1DF7F00547BBE /* Assets.xcassets in Resources */,
-				340877752AE1DF7D00547BBE /* Main.storyboard in Resources */,
 				34DF424C2AE2E3BD0069B1B6 /* MainScreenViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,14 +325,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		340877732AE1DF7D00547BBE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				340877742AE1DF7D00547BBE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		340877782AE1DF7F00547BBE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -474,9 +462,8 @@
 				INFOPLIST_FILE = KnightMovesThrice/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -502,9 +489,8 @@
 				INFOPLIST_FILE = KnightMovesThrice/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
