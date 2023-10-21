@@ -52,6 +52,8 @@ class ChessSquareCollectionViewCell: UICollectionViewCell {
             case .white:
                 self.updateSquareUI(backgroundColor: .white, markerText: nil, textColor: .black)
             }
+        case .solutionStep(let title):
+            self.updateSquareUI(backgroundColor: .blue, markerText: title, textColor: .white)
         }
     }
     

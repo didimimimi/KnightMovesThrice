@@ -48,7 +48,7 @@ class ChessboardMainViewModel: ChessboardMainIntents {
             
             oldSquare = currentGoalSquare
             self.currentGoalSquare = square
-        case .none:
+        default:
             break
         }
 
@@ -74,9 +74,19 @@ class ChessboardMainViewModel: ChessboardMainIntents {
             return
         }
         
-        path.forEach({
-            print($0.description)
+        var stepCounter = 1
+        
+        path.forEach({ stepSquare in
+            switch stepSquare.mode {
+            case .none:
+                let stepSquarePosition = stepSquare.position
+                self.chessboard.board[stepSquarePosition.row][stepSquarePosition.column].mode = .solutionStep(title: "\(stepCounter)")
+                stepCounter += 1
+            default:
+                break
+            }
         })
+        self.delegate?.update(state: .newChessboardState(chessboard: self.chessboard))
     }
     
     func resetButtonTapped() {

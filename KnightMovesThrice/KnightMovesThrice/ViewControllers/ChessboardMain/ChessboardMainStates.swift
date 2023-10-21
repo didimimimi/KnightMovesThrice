@@ -12,6 +12,5 @@ enum ChessboardMainStates {
     case newChessboardState(chessboard: Chessboard)
     case sliderValueChangedState(value: Float)
     case newSquareState(newSquare: ChessboardSquare, oldSquare: ChessboardSquare)
-    case drawPathState
     case noPathState
 }

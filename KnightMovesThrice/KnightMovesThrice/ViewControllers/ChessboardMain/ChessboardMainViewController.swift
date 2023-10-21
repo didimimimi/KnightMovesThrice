@@ -161,8 +161,6 @@ extension ChessboardMainViewController: ChessboardMainViewModelDelegate {
             self.handleSliderValueChangedState(value: value)
         case .newSquareState(let newSquare, let oldSquare):
             self.handleNewSquareState(newSquare: newSquare, oldSquare: oldSquare)
-        case .drawPathState:
-            self.handleDrawPathState()
         case .noPathState:
             self.handleNoPathState()
         case .dummyState:
@@ -186,10 +184,6 @@ extension ChessboardMainViewController: ChessboardMainViewModelDelegate {
                 IndexPath(item: oldSquare.position.column, section: oldSquare.position.row)
             ])
         }
-    }
-    
-    private func handleDrawPathState() {
-        
     }
     
     private func handleNoPathState() {

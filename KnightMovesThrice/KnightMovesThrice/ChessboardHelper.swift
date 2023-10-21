@@ -15,6 +15,7 @@ enum ChessboardSquareColor {
 enum ChessboardSpecialSquareMode {
     case knight
     case goal
+    case solutionStep(title: String)
     case none
 }
 
