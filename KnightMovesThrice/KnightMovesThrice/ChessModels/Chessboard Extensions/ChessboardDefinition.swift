@@ -39,4 +39,31 @@ class Chessboard {
             })
         })
     }
+    
+    func getKnightOnBoard() -> ChessboardSquare? {
+        return self.getKnightOrGoalInBoard(type: .knight)
+    }
+    
+    func getGoalOnBoard() -> ChessboardSquare? {
+        return self.getKnightOrGoalInBoard(type: .goal)
+    }
+    
+    private func getKnightOrGoalInBoard(type: ChessboardSquareType) -> ChessboardSquare? {
+        switch type {
+        case .knight, .goal:
+            var knightOrGoalSquare: ChessboardSquare?
+            
+            for chessRow in self.board {
+                for square in chessRow {
+                    if square.type == type {
+                        return square
+                    }
+                }
+            }
+            
+            return knightOrGoalSquare
+        default:
+            return nil
+        }
+    }
 }
