@@ -22,7 +22,6 @@ class ChessSquareCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
     
     override init(frame: CGRect) {

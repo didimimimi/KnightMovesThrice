@@ -10,6 +10,7 @@ import UIKit
 class MainScreenViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var boardSizeSlider: UISlider!
     
     var chessboard = Chessboard()
     
@@ -24,12 +25,9 @@ class MainScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setUpSquares()
         self.setupCollectionView()
-    }
-    
-    private func setUpSquares() {
-        self.chessboard = ChessboardHelper().createChessboard(ofSize: self.chessboard.size)
+        self.setupCollectionViewFlowLayout()
+        self.setupSlider()
     }
     
     private func setupCollectionView() {
@@ -41,19 +39,33 @@ class MainScreenViewController: UIViewController {
                 bundle: .main
             ),
             forCellWithReuseIdentifier: ChessSquareCollectionViewCell.cellId)
-        
+    }
+    
+    private func setupCollectionViewFlowLayout() {
         let layout = UICollectionViewFlowLayout()
-        layout.collectionView?.delegate = self
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        let deviceWidth = UIScreen.main.bounds.size.width
-        let squareSize = floor(deviceWidth / CGFloat(self.chessboard.size))
-        layout.itemSize = CGSize(width: squareSize, height: squareSize)
+        
+//        layout.itemSize = CGSize(width: squareSize, height: squareSize)
         self.collectionView.setCollectionViewLayout(layout, animated: true)
+    }
+    
+    private func setupSlider() {
+        self.boardSizeSlider.isContinuous = true
+        self.boardSizeSlider.value = Float(self.chessboard.size)
+    }
+    
+    @IBAction func sliderMoved(_ sender: UISlider) {
+        let roundedValue = lroundf(self.boardSizeSlider.value)
+        sender.setValue(Float(roundedValue), animated: true)
+        
+        self.chessboard.size = roundedValue
+        self.collectionView.reloadData()
+//        self.setupCollectionViewFlowLayout()
     }
 }
 
-extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return self.chessboard.size
     }
@@ -76,16 +88,29 @@ extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let deviceWidth = UIScreen.main.bounds.size.width
+        
+        let squareSize = floor(deviceWidth / CGFloat(self.chessboard.size))
+        return CGSize(width: squareSize, height:squareSize)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
 }
 
 extension MainScreenViewController: ChessSquareCollectionViewCellDelegate {
     func squaredTapped(_ square: ChessboardSquare) {
-        
-        var squareInChessboard = self.chessboard.board[square.position.row][square.position.column]
-        squareInChessboard.mode = .knight
+        square.mode = .knight
         
         UIView.performWithoutAnimation {
-            self.collectionView.reloadItems(at: [IndexPath(item: squareInChessboard.position.column, section: squareInChessboard.position.row)])
+            self.collectionView.reloadItems(at: [IndexPath(item: square.position.column, section: square.position.row)])
         }
     }
 }
