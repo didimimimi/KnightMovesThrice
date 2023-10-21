@@ -10,6 +10,7 @@ import UIKit
 class ChessboardMainViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var chessboardSizePromptLabel: UILabel!
     @IBOutlet weak var boardSizeSlider: UISlider!
     @IBOutlet weak var modeSwitch: UISwitch!
     @IBOutlet weak var findPathButton: UIButton!
@@ -177,6 +178,8 @@ extension ChessboardMainViewController: ChessboardMainViewModelDelegate {
     
     private func handleSliderValueChangedState(value: Float) {
         self.boardSizeSlider.setValue(value, animated: true)
+        let intValue = Int(value)
+        self.chessboardSizePromptLabel.text = "Slide to change the size of the chessboard.\n Current size is \(intValue) x \(intValue)."
     }
     
     private func handleNewSquareState(newSquare: ChessboardSquare, oldSquare: ChessboardSquare?) {
