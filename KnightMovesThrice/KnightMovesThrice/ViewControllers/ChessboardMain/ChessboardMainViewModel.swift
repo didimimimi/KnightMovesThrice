@@ -69,14 +69,15 @@ class ChessboardMainViewModel: ChessboardMainIntents {
     }
     
     func findPathButtonTapped() {
-        guard let path = self.chessboard.findThreeMovesPath(from: self.currentKnightSquare, to: self.currentGoalSquare) else {
+        guard let finalPointsAndMoves = self.chessboard.findThreeMovesPath(from: self.currentKnightSquare,
+                                                                   to: self.currentGoalSquare) else {
             self.delegate?.update(state: .noPathState)
             return
         }
         
         var stepCounter = 1
         
-        path.forEach({ stepSquare in
+        finalPointsAndMoves.finalPoints.forEach({ stepSquare in
             switch stepSquare.mode {
             case .none:
                 let stepSquarePosition = stepSquare.position
@@ -86,6 +87,8 @@ class ChessboardMainViewModel: ChessboardMainIntents {
                 break
             }
         })
+        
+        self.chessboard.addIntermediatePointsToPath(with: finalPointsAndMoves.finalPoints, and: finalPointsAndMoves.moves)
         self.delegate?.update(state: .newChessboardState(chessboard: self.chessboard))
     }
     

@@ -64,7 +64,7 @@ class ChessboardMainViewController: UIViewController {
     
     private func setupSwitch() {
         self.modeSwitch.isOn = false
-        self.modeSwitch.backgroundColor = .lightGray
+        self.modeSwitch.backgroundColor = .orange
         self.modeSwitch.onTintColor = .green
         self.modeSwitch.layer.cornerRadius = 16
     }

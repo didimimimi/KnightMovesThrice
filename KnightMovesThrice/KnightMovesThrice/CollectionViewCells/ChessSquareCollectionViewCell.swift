@@ -42,22 +42,24 @@ class ChessSquareCollectionViewCell: UICollectionViewCell {
     private func updateBasedOnSquareMode() {
         switch self.square.mode {
         case .knight:
-            self.updateSquareUI(backgroundColor: .lightGray, markerText: "Knight", textColor: .black)
+            self.updateSquareUI(backgroundColor: .orange, markerText: "Knight", textColor: .black)
         case .goal:
             self.updateSquareUI(backgroundColor: .green, markerText: "Goal", textColor: .black)
         case .none:
             switch square.color {
             case .black:
-                self.updateSquareUI(backgroundColor: .black, markerText: nil, textColor: .white)
+                self.updateSquareUI(backgroundColor: .black, markerText: nil)
             case .white:
-                self.updateSquareUI(backgroundColor: .white, markerText: nil, textColor: .black)
+                self.updateSquareUI(backgroundColor: .white, markerText: nil)
             }
         case .solutionStep(let title):
             self.updateSquareUI(backgroundColor: .blue, markerText: title, textColor: .white)
+        case .pathStep:
+            self.updateSquareUI(backgroundColor: .lightGray, markerText: nil)
         }
     }
     
-    private func updateSquareUI(backgroundColor: UIColor, markerText: String?, textColor: UIColor) {
+    private func updateSquareUI(backgroundColor: UIColor, markerText: String?, textColor: UIColor = .black) {
         self.backgroundColor = backgroundColor
         self.markerLabel.text = markerText
         self.markerLabel.textColor = textColor
