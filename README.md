@@ -123,3 +123,33 @@ The `Chessboard` class contains several other functionalities as well. They are 
 - func addIntermediatePointsToPath(with finalPoints: [ChessboardSquare], and moves: [KnightMove]) : Uses the solution data in order to construct the entire path (the ones marked with shades of gray) and place it on the board as well.
 
 ## MVI
+The screen is constructed using the MVI architecture. The screen needs the following in order to function by that architecture's standards:
+- `ChessboardMainViewController`: The main screen itself.
+- `ChessboardMainIntents`: The screens intents. One intent is an interaction of the user with a screen. When they tap a square, for instance, the corresponding intent should be called.
+- `ChessboardMainStates`: The states of the screen. For example, when an alert is shown, the screen is on an "show alert" state.
+- `ChessboardMainViewModel`: The view model of the screen. It includes all the functionality as far as computations are concerned (for example calculating the path), so that the `ChessboardMainViewController` is left with only the necessary functionality about the UI.
+
+Simply put, the `ChessboardMainIntents` is a protocol that the `ChessboardMainViewModel` implements. The `ChessboardMainStates` is an enum. The view model defines a protocol (delegate) of its own, the `ChessboardMainViewModelDelegate`, with the following function:
+`func update(state: ChessboardMainStates) : updates the state of the screen`
+The `ChessboardMainViewModelDelegate` is implemented by the `ChessboardMainViewController`, which the latter defines a specific action by switching on the provided state (enum). Internally the view model will call update(state: ChessboardMainStates) in order to notify the view controller about the change and let it handle it however it wants (for example present an alert).
+
+### The `ChessboardMainIntents` and `ChessboardMainStates`
+
+Briefly, the `ChessboardMainIntents` are the following:
+- func squareTapped(square: ChessboardSquare) : the intent of a user tapping a square
+- func sliderDragged(to value: Float) : the intent of a user moving the slider
+- func switchToogled(to value: Bool) : the intent of toogling the switch
+- func findPathButtonTapped() : the intent of pressing the "Find 3-Move Path" button.
+- func resetButtonTapped() : the intent of pressing the "Reset Board" button.
+
+And the `ChessboardMainStates`
+- case dummyState : used as an initial state, in order not to define the state as nullable
+- case newChessboardState(chessboard: Chessboard) : notifies the view controller that a new chessboard has been made or updated the current one has been updated. In any case, the view controller reloads the internal `UICollectionView`. This state is also used when a solution is found.
+- case sliderValueChangedState(value: Float) : notifies the view controller that the slider has changed value, so the chessboards should be resized.
+- case newSquareState(newSquare: ChessboardSquare, oldSquare: ChessboardSquare?) : notifies the view controller to update the knight or goal marker and reset the current (old) square back to black or white.
+- case noPathState : notifies the view controller that there is no path between the knight and goal markers, so it must show an alert to the user.
+- case resetSwitchState : notifies the view controller that the toogle switch should be reset back to the "knight" mode.
+
+## Conclusion
+That is all. The Unit Tests are not to be explained here but I can say that there is a **85.2% coverage** with **26 tests**.
+If there are any questions or suggestions, feel free to contact me through my email.
