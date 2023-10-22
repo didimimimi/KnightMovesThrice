@@ -10,7 +10,8 @@ import Foundation
 typealias ChessboardRow = [ChessboardSquare]
 typealias KnightMove = (dx: Int, dy: Int)
 
-class Chessboard {
+class Chessboard: Equatable {
+    
     var board = [ChessboardRow]()
     var size: Int {
         didSet {
@@ -63,5 +64,20 @@ class Chessboard {
         default:
             return nil
         }
+    }
+    
+    static func == (lhs: Chessboard, rhs: Chessboard) -> Bool {
+        if lhs.size != rhs.size {
+            return false
+        } else {
+            for (lRowIndex, lRow) in lhs.board.enumerated() {
+                for (lSquareIndex, lSquare) in lRow.enumerated() {
+                    if lSquare != rhs.board[lRowIndex][lSquareIndex] {
+                        return false
+                    }
+                }
+            }
+        }
+        return true
     }
 }

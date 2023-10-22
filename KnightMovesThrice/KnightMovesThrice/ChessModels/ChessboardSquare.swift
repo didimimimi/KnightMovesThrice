@@ -26,7 +26,7 @@ class ChessboardSquare: Hashable {
     init() {}
     
     static func == (lhs: ChessboardSquare, rhs: ChessboardSquare) -> Bool {
-        return lhs.position == rhs.position
+        return lhs.position == rhs.position && lhs.color == rhs.color && lhs.type == rhs.type
     }
     
     func hash(into hasher: inout Hasher) {

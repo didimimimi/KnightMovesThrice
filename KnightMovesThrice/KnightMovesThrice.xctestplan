@@ -1,0 +1,37 @@
+{
+  "configurations" : [
+    {
+      "id" : "5ABC6259-72A6-4496-9215-0962BFE27653",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:KnightMovesThrice.xcodeproj",
+      "identifier" : "340877692AE1DF7D00547BBE",
+      "name" : "KnightMovesThrice"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:KnightMovesThrice.xcodeproj",
+        "identifier" : "3408777F2AE1DF8000547BBE",
+        "name" : "KnightMovesThriceTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:KnightMovesThrice.xcodeproj",
+        "identifier" : "340877892AE1DF8000547BBE",
+        "name" : "KnightMovesThriceUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

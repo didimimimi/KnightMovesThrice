@@ -56,19 +56,28 @@ final class ChessboardSquareTests: XCTestCase {
         XCTAssertEqual(square.color, .black, "Color should be black")
     }
     
-    // Test case for square equality (only positions matter)
+    // Test case for square equality
     func test_SquareEquality() {
         let square1 = ChessboardSquare(position: ChessboardSquarePosition(row: 4, column: 5),
                                        color: .black,
                                        type: .knight)
         let square2 = ChessboardSquare(position: ChessboardSquarePosition(row: 4, column: 5),
-                                       color: .white,
-                                       type: .goal)
+                                       color: .black,
+                                       type: .knight)
         let square3 = ChessboardSquare(position: ChessboardSquarePosition(row: 2, column: 2),
                                        color: .black,
                                        type: .knight)
+        let square4 = ChessboardSquare(position: ChessboardSquarePosition(row: 4, column: 5),
+                                       color: .white,
+                                       type: .knight)
+        let square5 = ChessboardSquare(position: ChessboardSquarePosition(row: 4, column: 5),
+                                       color: .black,
+                                       type: .goal)
         
-        XCTAssertEqual(square1, square2, "Position should be same, despite having the rest of the attributes different")
-        XCTAssertNotEqual(square1, square3, "Squares should be different, despite having the rest of the attrubutes the same")
+        XCTAssertEqual(square1, square2, "All attributes same")
+        XCTAssertNotEqual(square1, square3, "Different positions")
+        XCTAssertNotEqual(square1, square4, "Different colors")
+        XCTAssertNotEqual(square1, square5, "Different types")
+
     }
 }

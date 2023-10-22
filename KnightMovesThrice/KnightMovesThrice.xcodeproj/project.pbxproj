@@ -25,7 +25,9 @@
 		3414CEA62AE46E9700099EF8 /* ChessboardThreeMovesExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414CEA52AE46E9700099EF8 /* ChessboardThreeMovesExtension.swift */; };
 		3414CEA82AE46EBE00099EF8 /* ChessboardDrawPathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414CEA72AE46EBE00099EF8 /* ChessboardDrawPathExtension.swift */; };
 		34D5BDD52AE50F7600B59371 /* ChessboardSquareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D5BDD42AE50F7600B59371 /* ChessboardSquareTests.swift */; };
-		34D5BDD72AE5140600B59371 /* ChessboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D5BDD62AE5140600B59371 /* ChessboardTests.swift */; };
+		34D5BDD72AE5140600B59371 /* ChessboardBasicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D5BDD62AE5140600B59371 /* ChessboardBasicTests.swift */; };
+		34D5BDD92AE51F0B00B59371 /* ChessboardAdvancedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D5BDD82AE51F0B00B59371 /* ChessboardAdvancedTests.swift */; };
+		34D5BDDB2AE5282400B59371 /* ChessboardMainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D5BDDA2AE5282400B59371 /* ChessboardMainViewModelTests.swift */; };
 		34DF42482AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DF42462AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.swift */; };
 		34DF42492AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34DF42472AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.xib */; };
 		34DF424C2AE2E3BD0069B1B6 /* ChessboardMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34DF424B2AE2E3BD0069B1B6 /* ChessboardMainViewController.xib */; };
@@ -70,8 +72,11 @@
 		3414CEA22AE46CFA00099EF8 /* ChessboardCreationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessboardCreationExtension.swift; sourceTree = "<group>"; };
 		3414CEA52AE46E9700099EF8 /* ChessboardThreeMovesExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessboardThreeMovesExtension.swift; sourceTree = "<group>"; };
 		3414CEA72AE46EBE00099EF8 /* ChessboardDrawPathExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessboardDrawPathExtension.swift; sourceTree = "<group>"; };
+		3441C5072AE53A400025DDE0 /* KnightMovesThrice.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = KnightMovesThrice.xctestplan; sourceTree = "<group>"; };
 		34D5BDD42AE50F7600B59371 /* ChessboardSquareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessboardSquareTests.swift; sourceTree = "<group>"; };
-		34D5BDD62AE5140600B59371 /* ChessboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessboardTests.swift; sourceTree = "<group>"; };
+		34D5BDD62AE5140600B59371 /* ChessboardBasicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessboardBasicTests.swift; sourceTree = "<group>"; };
+		34D5BDD82AE51F0B00B59371 /* ChessboardAdvancedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessboardAdvancedTests.swift; sourceTree = "<group>"; };
+		34D5BDDA2AE5282400B59371 /* ChessboardMainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessboardMainViewModelTests.swift; sourceTree = "<group>"; };
 		34DF42462AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessSquareCollectionViewCell.swift; sourceTree = "<group>"; };
 		34DF42472AE2DAC10069B1B6 /* ChessSquareCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChessSquareCollectionViewCell.xib; sourceTree = "<group>"; };
 		34DF424B2AE2E3BD0069B1B6 /* ChessboardMainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChessboardMainViewController.xib; sourceTree = "<group>"; };
@@ -105,6 +110,7 @@
 		340877612AE1DF7D00547BBE = {
 			isa = PBXGroup;
 			children = (
+				3441C5072AE53A400025DDE0 /* KnightMovesThrice.xctestplan */,
 				3408776C2AE1DF7D00547BBE /* KnightMovesThrice */,
 				340877832AE1DF8000547BBE /* KnightMovesThriceTests */,
 				3408778D2AE1DF8000547BBE /* KnightMovesThriceUITests */,
@@ -141,7 +147,9 @@
 			isa = PBXGroup;
 			children = (
 				34D5BDD42AE50F7600B59371 /* ChessboardSquareTests.swift */,
-				34D5BDD62AE5140600B59371 /* ChessboardTests.swift */,
+				34D5BDD62AE5140600B59371 /* ChessboardBasicTests.swift */,
+				34D5BDD82AE51F0B00B59371 /* ChessboardAdvancedTests.swift */,
+				34D5BDDA2AE5282400B59371 /* ChessboardMainViewModelTests.swift */,
 			);
 			path = KnightMovesThriceTests;
 			sourceTree = "<group>";
@@ -359,8 +367,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34D5BDD92AE51F0B00B59371 /* ChessboardAdvancedTests.swift in Sources */,
 				34D5BDD52AE50F7600B59371 /* ChessboardSquareTests.swift in Sources */,
-				34D5BDD72AE5140600B59371 /* ChessboardTests.swift in Sources */,
+				34D5BDD72AE5140600B59371 /* ChessboardBasicTests.swift in Sources */,
+				34D5BDDB2AE5282400B59371 /* ChessboardMainViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

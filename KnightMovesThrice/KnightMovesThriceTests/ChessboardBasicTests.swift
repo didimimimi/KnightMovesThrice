@@ -8,11 +8,11 @@
 import XCTest
 @testable import KnightMovesThrice
 
-final class ChessboardTests: XCTestCase {
-    var testChessboard: Chessboard?
+final class ChessboardBasicTests: XCTestCase {
+    var chessboard = Chessboard(size: 8)
     
     override func setUpWithError() throws {
-        self.testChessboard = Chessboard(size: 8)
+        self.chessboard.size = 8 // this will redraw/reset the board automatically
     }
     
     // Test default initializer
@@ -24,9 +24,7 @@ final class ChessboardTests: XCTestCase {
     }
     
     // Test custom initializer
-    func test_CustomInitializer() throws {
-        let chessboard = try XCTUnwrap(self.testChessboard, "Chessboard should not be nil")
-        
+    func test_CustomInitializer() {
         let chessboardRows = chessboard.board.count
         let chessboardSquaresPerRow = chessboard.board[0].count
         
@@ -36,8 +34,7 @@ final class ChessboardTests: XCTestCase {
     }
     
     // Test changing the size of a chessboard
-    func test_ChangeChessboardSize() throws {
-        var chessboard = try XCTUnwrap(self.testChessboard, "Chessboard should not be nil")
+    func test_ChangeChessboardSize() {
         chessboard.size = 6
         
         let chessboardRows = chessboard.board.count
@@ -49,9 +46,7 @@ final class ChessboardTests: XCTestCase {
     }
     
     // Test pattern of chessboard
-    func test_PatterOfChessboard() throws {
-        let chessboard = try XCTUnwrap(self.testChessboard, "Chessboard should not be nil")
-
+    func test_PatterOfChessboard() {
         let evenRowEvenColumnColor = ChessboardSquareColor.black
         let oddRowOddColumnColor = ChessboardSquareColor.black
         let evenRowOddColumnColor = ChessboardSquareColor.white
@@ -69,9 +64,7 @@ final class ChessboardTests: XCTestCase {
     }
     
     // Test clearing previous solution path of chessboard
-    func test_ClearSolution() throws {
-        let chessboard = try XCTUnwrap(self.testChessboard, "Chessboard should not be nil")
-        
+    func test_ClearSolution() {
         XCTAssertTrue(chessboard.board[2][3].type == .none, "Default type is empty for square (3,4)")
         XCTAssertTrue(chessboard.board[2][4].type == .none, "Default type is empty for square (3,5)")
         XCTAssertTrue(chessboard.board[2][5].type == .none, "Default type is empty for square (3,6)")
@@ -97,8 +90,6 @@ final class ChessboardTests: XCTestCase {
     
     // Test whether a knight and/or goal exist on the chessboard
     func test_KnightOrGoalExistOnBoard() throws {
-        let chessboard = try XCTUnwrap(self.testChessboard, "Chessboard should not be nil")
-
         XCTAssertNil(chessboard.getKnightOnBoard())
         XCTAssertNil(chessboard.getGoalOnBoard())
         
@@ -110,5 +101,20 @@ final class ChessboardTests: XCTestCase {
         
         XCTAssertTrue(knightSquare.type == .knight, "Knight should exist on chessboard")
         XCTAssertTrue(goalSquare.type == .goal, "Goal should exist on chessboard")
+    }
+    
+    // Test equality of two chessboards
+    func test_EqualChessboards() {
+        let chessboard1 = Chessboard(size: 4)
+        let chessboard2 = Chessboard(size: 4)
+        let chessboard3 = Chessboard(size: 4)
+        let chessboard4 = Chessboard(size: 3)
+        
+        XCTAssertNotEqual(chessboard1, chessboard4)
+        
+        chessboard3.board[2][2].type = .knight
+        XCTAssertNotEqual(chessboard1, chessboard3)
+        
+        XCTAssertEqual(chessboard1, chessboard2)
     }
 }
