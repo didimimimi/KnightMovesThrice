@@ -53,9 +53,9 @@ extension Chessboard {
             while !queue.isEmpty {
                 let (current, path, moves) = queue.removeFirst() // examine a current square
                 
-                for (dx, dy) in knightMoves {
-                    let newRow = current.position.row + dx
-                    let newColumn = current.position.column + dy // move the knight to the next square
+                for knightMove in knightMoves {
+                    let newRow = current.position.row + knightMove.dx
+                    let newColumn = current.position.column + knightMove.dy // move the knight to the next square
                     
                     if isWithinValidBounds(row: newRow, column: newColumn) { // if we're within the chessboard's bounds
                         let nextPoint = self.board[newRow][newColumn]
@@ -64,7 +64,7 @@ extension Chessboard {
                             if nextPoint == goalSquare {
                                 // The destination is reachable, return the full path.
                                 //  The first move is the knight's initial position so it's removed for clarity
-                                var finalMoves = moves + [KnightMove(dx: dx, dy: dy)]
+                                var finalMoves = moves + [KnightMove(dx: knightMove.dx, dy: knightMove.dy)]
                                 finalMoves.removeFirst()
                                 
                                 return (finalPoints: path + [nextPoint], moves: finalMoves)
@@ -74,7 +74,7 @@ extension Chessboard {
                             
                             // prepare next level of moves in the BFS algorithm
                             // E.g all possible moves for the first move, etc.
-                            nextQueue.append((nextPoint, path + [nextPoint], moves + [KnightMove(dx: dx, dy: dy)]))
+                            nextQueue.append((nextPoint, path + [nextPoint], moves + [KnightMove(dx: knightMove.dx, dy: knightMove.dy)]))
                         }
                     }
                 }
