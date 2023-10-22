@@ -50,7 +50,7 @@ final class ChessboardTests: XCTestCase {
     
     // Test pattern of chessboard
     func test_PatterOfChessboard() throws {
-        var chessboard = try XCTUnwrap(self.testChessboard, "Chessboard should not be nil")
+        let chessboard = try XCTUnwrap(self.testChessboard, "Chessboard should not be nil")
 
         let evenRowEvenColumnColor = ChessboardSquareColor.black
         let oddRowOddColumnColor = ChessboardSquareColor.black
@@ -66,5 +66,49 @@ final class ChessboardTests: XCTestCase {
         XCTAssertEqual(oddRowOddColumnSquare.color, oddRowOddColumnColor, "Odd row & odd column squares are black")
         XCTAssertEqual(evenRowOddColumnSquare.color, evenRowOddColumnColor, "Even row & odd column squares are white")
         XCTAssertEqual(oddRowEvenColumnSquare.color, oddRowAndEvenColumnColor, "Odd row & even column squares are white")
+    }
+    
+    // Test clearing previous solution path of chessboard
+    func test_ClearSolution() throws {
+        let chessboard = try XCTUnwrap(self.testChessboard, "Chessboard should not be nil")
+        
+        XCTAssertTrue(chessboard.board[2][3].type == .none, "Default type is empty for square (3,4)")
+        XCTAssertTrue(chessboard.board[2][4].type == .none, "Default type is empty for square (3,5)")
+        XCTAssertTrue(chessboard.board[2][5].type == .none, "Default type is empty for square (3,6)")
+        XCTAssertTrue(chessboard.board[2][6].type == .none, "Default type is empty for square (3,7)")
+
+        chessboard.board[2][3].type = .pathStep1
+        chessboard.board[2][4].type = .pathStep2
+        chessboard.board[2][5].type = .pathStep3
+        chessboard.board[2][6].type = .solutionStep(title: "solution step")
+
+        XCTAssertTrue(chessboard.board[2][3].type == .pathStep1, "Type changed for square (3,4) should be pathStep1")
+        XCTAssertTrue(chessboard.board[2][4].type == .pathStep2, "Type changed for square (3,5) should be pathStep2")
+        XCTAssertTrue(chessboard.board[2][5].type == .pathStep3, "Type changed for square (3,6) should be pathStep3")
+        XCTAssertTrue(chessboard.board[2][6].type == .solutionStep(title: "solution step"), "Type changed for square (3,7) should be solutionStep")
+
+        chessboard.clearSolutionAndPath()
+        
+        XCTAssertTrue(chessboard.board[2][3].type == .none, "Type should be reverted back to none for square (3,4)")
+        XCTAssertTrue(chessboard.board[2][4].type == .none, "Type should be reverted back to none for square (3,5)")
+        XCTAssertTrue(chessboard.board[2][5].type == .none, "Type should be reverted back to none for square (3,6)")
+        XCTAssertTrue(chessboard.board[2][6].type == .none, "Type should be reverted back to none for square (3,7)")
+    }
+    
+    // Test whether a knight and/or goal exist on the chessboard
+    func test_KnightOrGoalExistOnBoard() throws {
+        let chessboard = try XCTUnwrap(self.testChessboard, "Chessboard should not be nil")
+
+        XCTAssertNil(chessboard.getKnightOnBoard())
+        XCTAssertNil(chessboard.getGoalOnBoard())
+        
+        chessboard.board[1][4].type = .knight
+        chessboard.board[3][3].type = .goal
+        
+        let knightSquare = try XCTUnwrap(chessboard.getKnightOnBoard(), "Knight square should not be nil")
+        let goalSquare = try XCTUnwrap(chessboard.getGoalOnBoard(), "Goal square should not be nil")
+        
+        XCTAssertTrue(knightSquare.type == .knight, "Knight should exist on chessboard")
+        XCTAssertTrue(goalSquare.type == .goal, "Goal should exist on chessboard")
     }
 }
