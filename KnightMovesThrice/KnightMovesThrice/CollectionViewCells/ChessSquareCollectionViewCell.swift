@@ -42,9 +42,9 @@ class ChessSquareCollectionViewCell: UICollectionViewCell {
     private func updateBasedOnSquareType() {
         switch self.square.type {
         case .knight:
-            self.updateSquareUI(backgroundColor: .orange, markerText: "Knight", textColor: .black)
+            self.updateSquareUI(backgroundColor: .orange, markerText: "🐴", textColor: .black)
         case .goal:
-            self.updateSquareUI(backgroundColor: .green, markerText: "Goal", textColor: .black)
+            self.updateSquareUI(backgroundColor: .green, markerText: "🏁", textColor: .black)
         case .none:
             switch square.color {
             case .black:
